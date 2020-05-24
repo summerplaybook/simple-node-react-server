@@ -3,31 +3,31 @@ import { StyleSheet, Text, View } from 'react-native';
 
 export default function App() {
 
-  const ws = new WebSocket('ws://localhost:3030');
-
-  const fire = () => {
-    console.log('fired')
-    ws.send(JSON.stringify({type: 'move', value: 'I am moving'}));
-    ws.send(JSON.stringify({type: 'delete', value: 'I am deleting'}));
-  }
-
-  const sayHey = (message) => {
-    console.log('hey there')
-  } 
-
-  ws.onmessage = (event) => {
-    const messages = JSON.parse(event.data);
-    console.log('from server', messages)
-  };
-  
   useEffect(() => {
+
+    const ws = new WebSocket('ws://localhost:3030');
+
+    const fire = () => {
+      console.log('fired')
+      ws.send(JSON.stringify({type: 'move', value: 'I am moving'}));
+      ws.send(JSON.stringify({type: 'delete', value: 'I am deleting'}));
+    }
+
+    const sayHey = (message) => {
+      console.log('hey there')
+    } 
+
+    ws.onmessage = (event) => {
+      const messages = JSON.parse(event.data);
+      console.log('from server', messages)
+    };
 
     ws.onopen = () => { 
       console.log('Now connected'); 
       fire()
     };
     
-  }, [0])
+  }, [])
 
   return (
     <View style={styles.container}>
