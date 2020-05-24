@@ -1,0 +1,19 @@
+# Mac custom attributes file (Desktop Service Store)
+.DS_Store
+
+# Jetbrains
+.idea/
+
+# secrets and configuration
+.secrets.js
+
+# node modules
+/node_modules/
+yarn-error.log
+npm-debug.*
+# package lock (use yarn instead of npm)
+package-lock.json
+
+# build folder
+dist
+
